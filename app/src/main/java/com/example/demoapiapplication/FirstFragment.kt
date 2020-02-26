@@ -49,8 +49,6 @@ class FirstFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //var album = arguments!!.getSerializable("album")
-        //albumList = album
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -94,6 +92,9 @@ class FirstFragment: Fragment() {
                         navController
                     )
                     rv_list.adapter = albumAdapter
+
+                }else if(response?.body()?.status?.equals(0)!!){
+                    Toast.makeText(activity, "Please try again later", Toast.LENGTH_SHORT).show()
                 }
             }
         })
